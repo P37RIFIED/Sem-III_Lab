@@ -1,7 +1,6 @@
 // Develop a C program that dynamically allocates memory for an array of characters. Allow the user to enter a string and store it in the allocated memory.Print the string
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 
 int main()
 {
