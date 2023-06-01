@@ -1,37 +1,50 @@
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
-float func(float x)
+double func(double x)
 {
     return cos(x) + 5 * x - 6;
 }
 
-float derivfunc(float x)
+double derivative(double x)
 {
     return -sin(x) + 5;
 }
 
-float newton_raphson(float x, float error)
+double newtonMethod(double x, double error)
 {
-    float x_old = x;
-    float x_new;
-    float new_error = 1;
-    while (new_error > error);
+    double x_old = x;
+    double x_new;
+    double new_error = 1.0;
+    int iterations = 0;
+
+    while (new_error > error)
     {
-    x_new = x_old - (func(x_old)/derivfunc(x_old));
-    new_error = abs((x_new - x_old)/x_new); 
-    x_old = x_new;
+        x_new = x_old - (func(x_old) / derivative(x_old));
+        new_error = abs((x_new - x_old) / x_new);
+        x_old = x_new;
+        iterations++;
     }
+
+    cout << "Estimated Root: " << x_new << endl;
+    cout << "Functional Value at Root: " << func(x_new) << endl;
+    cout << "Number of Iterations: " << iterations << endl;
+
     return x_new;
 }
 
 int main()
 {
-    float x, error,root;
-    cout<<"Enter a number and expected error:"<<endl;
-    cin>>x>>error;
-    root = newton_raphson(x,error);
-    cout<<"The root is: "<<root;
+    double initial_guess, error;
+
+    cout << "Enter the initial guess: ";
+    cin >> initial_guess;
+    cout << "Enter the expected error: ";
+    cin >> error;
+
+    double root = newtonMethod(initial_guess, error);
+
     return 0;
 }

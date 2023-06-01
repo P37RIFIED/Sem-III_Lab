@@ -1,49 +1,49 @@
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
-float func(float x)
+double func(double x)
 {
     return 5 * pow(x, 5) - 2 * pow(x, 2) - 6;
 }
 
-float secantEquation(float old_X, float new_X)
+double secantMethod(double x0, double x1, double error)
 {
-    return new_X - ((new_X - old_X) / (func(new_X) - func(old_X))) * func(new_X);
-}
+    double x_old = x0;
+    double x_new = x1;
+    double x_next = 0.0;
+    double new_error = 1.0;
+    int iterations = 0;
 
-float calcError(float x_old, float x_new)
-{
-    return abs((x_new - x_old) / x_new);
-}
-
-float secantMethod(float lower_X, float higher_X, float expected_error)
-{
-    float error = 0;
-    float x = lower_X;
-    float y = higher_X;
-    do
+    while (new_error > error)
     {
-        float new_higher_X = secantEquation(x, y);
-        x = y;
-        y = new_higher_X;
-        error = calcError(y, x);
-    } while (error > expected_error);
+        x_next = x_new - (func(x_new) * (x_new - x_old)) / (func(x_new) - func(x_old));
+        new_error = abs((x_next - x_new) / x_next);
+        x_old = x_new;
+        x_new = x_next;
+        iterations++;
+    }
 
-    return y;
+    cout << "Estimated Root: " << x_next << endl;
+    cout << "Functional Value at Root: " << func(x_next) << endl;
+    cout << "Number of Iterations: " << iterations << endl;
+
+    return x_next;
 }
 
 int main()
 {
-    float lower_limit, upper_limit, error, result;
-    /*
-    lower_limit = 1;
-    upper_limit = 2;
-    error = 0.002;
-    */
-    cout << "Input lowerlimit, upper limit and error: " << endl;
-    cin >> lower_limit >> upper_limit >> error;
-    result = secantMethod(lower_limit, upper_limit, error);
-    cout << result;
+    double x0, x1, error;
+
+    cout << "Enter the initial guess (x0): ";
+    cin >> x0;
+    cout << "Enter the second guess (x1): ";
+    cin >> x1;
+    cout << "Enter the expected error: ";
+    cin >> error;
+
+    double root = secantMethod(x0, x1, error);
+
     return 0;
 }
