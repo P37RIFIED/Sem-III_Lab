@@ -5,41 +5,43 @@
 
 int main()
 {
-    int row, cols;
+    int rows, cols;
     int **arr;
     srand(time(NULL));
 
     printf("Enter the number of rows: ");
-    scanf("%d", &row);
+    scanf("%d", &rows);
 
     printf("Enter the number of columns: ");
     scanf("%d", &cols);
 
-    arr = (int **)malloc(row * sizeof(int *));
+    arr = (int **)malloc(rows * sizeof(int));
 
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < rows; i++)
     {
         arr[i] = (int *)malloc(cols * sizeof(int));
     }
 
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for(int j = 0; j < cols; j++)
+        for (int j = 0; j < cols; j++)
         {
-            arr[i][j] = rand();
+            arr[i][j] = rand() % 100;
         }
     }
 
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for(int j = 0; j < cols; j++){
-            printf("%d ", arr[i][j]);}
+        for (int j = 0; j < cols; j++)
+        {
+            printf("%d ", arr[i][j]);
+        }
         printf("\n");
     }
-    for(int i = 0; i<row; i++)
+    for (int i = 0; i < rows; i++)
     {
-        free (arr[i]);
+        free(arr[i]);
     }
-    
+
     free(arr);
 }
