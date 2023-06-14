@@ -43,11 +43,11 @@ int main()
     }
     // c.
     cout << "======================" << endl;
-    for (int i = 0; i <= 4; i++)
+    for (int i = 0; i < 4; i++)
     {
-        for (int j = 1; j <= 5; j++)
+        for (int j = 1; j <= 6; j++)
         {
-            if (i == 1 || i == 4 || j == 1 || j == 5)
+            if (i == 0 || i == 3 || j == 1 || j == 6)
             {
                 cout << "*";
             }
@@ -60,19 +60,23 @@ int main()
     }
     // d.
     cout << "======================" << endl;
-    for (int i = 1; i <= 3; i++)
+    for (int i = 1; i <= 4; i++)
     {
-        for (int j = 1; j <= 5; j++)
+        for (int j = 1; j <= 7; j++)
         {
-            if (i == 1 && j == 3)
+            if (i == 1 && j == 4)
             {
                 cout << "*";
             }
-            else if (i == 2 && (j == 2 || j == 3 || j == 4))
+            else if (i == 2 && (j >= 3 && j <=5 ))
             {
                 cout << "*";
             }
-            else if (i == 3)
+            else if(i == 3 && (j >= 2 && j <= 6) )
+            {
+                cout<<"*";
+            }
+            else if (i == 4)
             {
                 cout << "*";
             }

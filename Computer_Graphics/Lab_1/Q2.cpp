@@ -5,16 +5,11 @@ using namespace std;
 
 int main()
 {
-    int array[10];
+    int array[5] = {1,20,50,70,50};
     int largest = 0;
     int secondLargest = 0;
-    cout << "Enter 10 numbers:" << endl;
-    for (int i = 0; i < 10; i++)
-    {
-        cin >> array[i];
-    }
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 5; i++)
     {
         if (array[i] > largest)
         {
