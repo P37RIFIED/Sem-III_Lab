@@ -4,7 +4,7 @@
 #define MAX_SIZE 100
 
 typedef struct {
-    int stack[100];
+    int stack[MAX_SIZE];
     int top;
 } Stack;
 
@@ -37,22 +37,6 @@ int pop(Stack *s)
         s->top--;
         return item;
     }
-}
-
-void isEmpty(Stack *s)
-{
-    if (s->top == -1)
-    {
-        printf("The stack is empty\n");
-    } else
-    {
-        printf("The stack is not empty\n");
-    }
-}
-
-int sizeOf(Stack *s)
-{
-    return s->top + 1;
 }
 
 int main()

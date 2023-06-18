@@ -5,7 +5,7 @@
 
 typedef struct
 {
-    int stack[100];
+    int stack[MAX_SIZE];
     int top;
 } Stack;
 
@@ -59,13 +59,9 @@ int sizeOf(Stack *s)
     return s->top + 1;
 }
 
-void printMenu()
+int top(Stack *s)
 {
-    printf("Stack Operations Menu\n");
-    printf("1. Push item\n");
-    printf("2. Pop item\n");
-    printf("3. Display stack\n");
-    printf("4. Exit\n");
+    return s->stack[s->top];
 }
 
 void displayStack(Stack *s)
@@ -77,6 +73,17 @@ void displayStack(Stack *s)
     }
     printf("\n");
 }
+
+void printMenu()
+{
+    printf("Stack Operations Menu\n");
+    printf("1. Push item\n");
+    printf("2. Pop item\n");
+    printf("3. Display stack\n");
+    printf("4. Display top value\n");
+    printf("5. Exit\n");
+}
+
 
 int main()
 {
@@ -111,6 +118,10 @@ int main()
             break;
 
         case 4:
+            printf("The top value of stack is: %d", top(&hello));
+            break;
+
+        case 5:
             printf("\nExiting the program");
             return 0;
 
