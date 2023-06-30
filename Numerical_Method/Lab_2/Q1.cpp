@@ -24,11 +24,11 @@ double lagrangeInterpolation(double array1[], double array2[], double x, int n)
         {
             if (i != j)
             {
-                
-                nu*= (x - array1[j]);
-                de*= (x - array1[i] - array1[j]);
+
+                nu *= (x - array1[j]);
+                de *= (x - array1[i] - array1[j]);
             }
-            result += (nu/de)* array2[i];
+            result += (nu / de) * array2[i];
         }
         return result;
     }
