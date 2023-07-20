@@ -53,7 +53,7 @@ int main()
         cout << "y[" << i << "] = ";
         cin >> yValues[i];
     }
-    double forwardDifferenceTable[10][10]; // 2D array to store the forward difference table
+    double forwardDifferenceTable[10][10]; // array to store the forward difference table
 
     calculateForwardDifferenceTable(xValues, yValues, forwardDifferenceTable, n);
 
