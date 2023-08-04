@@ -1,3 +1,4 @@
+// Write a program to calculate integration using Trapezoidal rule
 #include <iostream>
 #include <cmath>
 
@@ -5,19 +6,13 @@ using namespace std;
 
 double func(double x)
 {
-    return sin(exp(-x));
+    return sin(1/exp(x));
 }
 
-double trapezoidalIntegration(double a, double b, int n)
+double trapezoidalIntegration(double a, double b)
 {
-    double h = (b - a) / n;
-    double sum = (func(a) + func(b)) / 2.0;
-
-    for (int i = 1; i < n; i++)
-    {
-        double x = a + i * h;
-        sum += func(x);
-    }
+    double h = (b - a) / 2;
+    double sum = (func(a) + func(b));
 
     return h * sum;
 }
@@ -25,7 +20,6 @@ double trapezoidalIntegration(double a, double b, int n)
 int main()
 {
     double a, b;
-    int n;
 
     cout << "Enter the lower limit (a): ";
     cin >> a;
@@ -33,18 +27,9 @@ int main()
     cout << "Enter the upper limit (b): ";
     cin >> b;
 
-    cout << "Enter the number of intervals (n): ";
-    cin >> n;
+    double result = trapezoidalIntegration(a, b);
 
-    if (n <= 0)
-    {
-        cout << "Number of intervals (n) must be greater than zero.\n";
-        return 1;
-    }
-
-    double result = trapezoidalIntegration(a, b, n);
-
-    cout << "The approximate integral of the function is: " << result << endl;
+    cout << "The approximate integral of the function using the Trapezoidal rule is: " << result << endl;
 
     return 0;
 }
